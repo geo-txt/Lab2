@@ -12,7 +12,6 @@ public class QueryToAPI {
 
     private String fullURL(String str) {
         str = URLEncoder.encode(str, StandardCharsets.UTF_8);
-//        System.out.println("works?");
         return (searchURL + str);
     }
 

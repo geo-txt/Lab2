@@ -4,6 +4,7 @@ void main() {
     QueryInput input = new QueryInput();
     QueryToAPI api = new QueryToAPI();
     ParseResult parser = new ParseResult();
+    ResultOutput output = new ResultOutput();
 
     String query = input.askQuery();
     String apiJson = api.search(query);
@@ -12,7 +13,6 @@ void main() {
         System.out.println("Ничего не найдено");
     }
     else {
-        System.out.println(results.size());
-        System.out.println(results.get(0).getTitle());
+        output.printResults(results);
     }
 }

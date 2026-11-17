@@ -1,7 +1,11 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultOutput {
-    private List<SearchResult> results = new ArrayList<>();
-}
 
+    public void printResults(List<SearchResult> results) {
+        for (int i = 0; i < results.size(); i++) {
+            SearchResult currentResult = results.get(i);
+            System.out.println((i + 1) + ". " + currentResult.getTitle());
+        }
+    }
+}
