@@ -21,5 +21,4 @@ public class ParseResult {
             return List.of();
         }
     }
-
 }

@@ -5,6 +5,7 @@ void main() {
     QueryToAPI api = new QueryToAPI();
     ParseResult parser = new ParseResult();
     ResultOutput output = new ResultOutput();
+    OpenBrowser open = new OpenBrowser();
 
     String query = input.askQuery();
     String apiJson = api.search(query);
@@ -14,5 +15,9 @@ void main() {
     }
     else {
         output.printResults(results);
+        System.out.println("Выберите желаемую статью");
+        int choice = input.readChoice(results.size());
+        int selectedPageID = results.get(choice).getPageid();
+        open.openByPageID(selectedPageID);
     }
 }
