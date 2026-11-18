@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 
 public class QueryToAPI {
     private String searchURL = "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=";
-    private final HttpClient client = HttpClient.newHttpClient();
+    private HttpClient client = HttpClient.newHttpClient();
 
     private String fullURL(String str) {
         str = URLEncoder.encode(str, StandardCharsets.UTF_8);
@@ -18,12 +18,11 @@ public class QueryToAPI {
     public String search(String query) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullURL(query)))
-                .header("User-Agent", "etu_student")
+                .header("User-Agent", "student")
                 .build();
 
         try {
-            HttpResponse<String> response =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 System.out.println("Ошибка сервера: " + response.statusCode());

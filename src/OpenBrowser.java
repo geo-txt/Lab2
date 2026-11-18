@@ -11,7 +11,7 @@ public class OpenBrowser {
         try {
             Desktop.getDesktop().browse(URI.create(url));
         } catch (IOException e) {
-            System.out.println("Не удалось открыть браузер. Откройте ссылку вручную: " + url);
+            System.out.println("Не удалось открыть браузер.");
         }
     }
 }

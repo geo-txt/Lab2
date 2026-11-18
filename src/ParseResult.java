@@ -6,7 +6,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 public class ParseResult {
-    private final Gson gson = new Gson();
+    private Gson gson = new Gson();
 
     public List<SearchResult> parse(String json) {
         try {

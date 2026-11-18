@@ -7,17 +7,24 @@ void main() {
     ResultOutput output = new ResultOutput();
     OpenBrowser open = new OpenBrowser();
 
-    String query = input.askQuery();
-    String apiJson = api.search(query);
-    List<SearchResult> results = parser.parse(apiJson);
-    if (results.isEmpty()) {
-        System.out.println("Ничего не найдено");
-    }
-    else {
+    while (true) {
+        String query = input.askQuery();
+        String apiJson = api.search(query);
+        if (apiJson == null) {
+            continue;
+        }
+
+        List<SearchResult> results = parser.parse(apiJson);
+        if (results.isEmpty()) {
+            System.out.println("Ничего не найдено");
+            continue;
+        }
+
         output.printResults(results);
         System.out.println("Выберите желаемую статью");
         int choice = input.readChoice(results.size());
         int selectedPageID = results.get(choice).getPageid();
         open.openByPageID(selectedPageID);
+        break;
     }
 }
